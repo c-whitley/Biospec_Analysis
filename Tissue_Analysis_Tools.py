@@ -279,7 +279,7 @@ def clean_spectra(input_spectra, n_components):
 	
 	filtered = np.dot(pca.transform(input_spectra)[:,:n_components], pca.components_[:n_components,:])
 
-	values = np.add(filtered, np.mean(input_spectra, axis = 0).reshape(1,-1))
+	values = np.add(filtered, np.mean(input_spectra, axis = 0).values.reshape(1,-1))
 
 	return pd.DataFrame(values, columns = input_spectra.columns, index = input_spectra.index)
 
