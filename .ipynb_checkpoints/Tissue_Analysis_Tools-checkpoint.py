@@ -271,7 +271,7 @@ def find_wn(n, wavenumber_list):
 	
 from sklearn.decomposition import PCA
 
-def clean_spectra(input_spectra, n_components):
+def PCA_denoise(input_spectra, n_components):
 	
 	pca = PCA(n_components = n_components)
 	
@@ -285,6 +285,8 @@ def clean_spectra(input_spectra, n_components):
 
 
 def process_data(input_dataframe, start = 1000, end = 1800, paraffin = (1340,1490), balance = False):
+	
+	print("Processing")
 	
 	# Find the indices which the start and end positions are closest to.
 	start, end = [find_wn(n, input_dataframe.columns) for n in [start,end]]
