@@ -260,6 +260,7 @@ def reassign(dataframe, reassignment_list):
 		
 	return dataframe#.drop("index", axis = 1)
 
+	
 def find_wn(n, wavenumber_list):
 	
 	wavenumbers = list(wavenumber_list)
@@ -315,15 +316,3 @@ def process_data(input_dataframe, start = 1000, end = 1800, paraffin = (1340,149
 		input_dataframe = groups.apply(lambda x: x.sample(groups.size().min())).set_index(original_index)
 		
 	return input_dataframe
-
-def bin_predict(x_array, classifiers):
-    
-    content = {name: classifier.predict_proba(x_array)[:,1] for name, classifier in classifiers.items()}
-    output = pd.DataFrame(content)
-    
-    # Normalise probability
-    output = output.div(output.sum(axis = 1), axis = 0)
-
-    return output
-
-	

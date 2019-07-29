@@ -6,10 +6,9 @@ def convert_to_secondary(input_data, secondary_structures):
 
     # Check if the inputted type is a dataframe
     # from here onwards only use numpy arrays
-    if isinstance(input_data, pd.DataFrame):
 
-        input_data = input_data.values
+    assert isinstance(input_data,np.array), "Input must be a numpy array"
 
-    input_data
+
 
     return output
