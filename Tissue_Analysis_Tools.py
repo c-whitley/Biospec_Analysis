@@ -1,6 +1,7 @@
 import h5py
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
@@ -413,7 +414,7 @@ class PCA_denoiser( BaseEstimator, TransformerMixin ):
 
 from scipy.spatial import ConvexHull
 
-class Rubber_Band_Correction( BaseEstimator, TransformerMixin ):
+class Rubber_Band( BaseEstimator, TransformerMixin ):
 
 
     #Class Constructor 
@@ -444,4 +445,11 @@ class Rubber_Band_Correction( BaseEstimator, TransformerMixin ):
 
         self.baseline = np.interp(self.x, self.x[self.v], self.y[self.v])
 
-        return self
+        return sel
+
+def perc_plot(im, lower_perc = 1, upper_perc = 99):
+    
+    upper, lower = np.percentile(im.flatten()
+                                 , [upper_perc , lower_perc ])
+
+    return plt.imshow(im, vmin = lower, vmax = upper)
