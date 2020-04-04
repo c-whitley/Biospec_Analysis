@@ -15,7 +15,7 @@ class UNet:
 
 		input_ = layers.Input(self.input_size)
 
-		c1 = layers.Conv2D(32, (3,3), kernel_initializer = "he_normal", padding = "same")(input_)
+		c1 = layers.Conv2D(32, (3,3), activation = "relu", kernel_initializer = "he_normal", padding = "same")(input_)
 		p1 = layers.MaxPooling2D((2, 2))(c1)
 		p1 = layers.Dropout(0.1)(p1)
 
