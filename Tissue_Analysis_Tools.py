@@ -284,9 +284,7 @@ def PCA_denoise(input_spectra, n_components):
     return pd.DataFrame(values, columns = input_spectra.columns, index = input_spectra.index)
 
 def process_data(input_dataframe, start = 1000, end = 1800, paraffin = (1340,1490), balance = False):
-    
-    print("Processing")
-    
+
     # Find the indices which the start and end positions are closest to.
     start, end = [find_wn(n, input_dataframe.columns) for n in [start,end]]
     
